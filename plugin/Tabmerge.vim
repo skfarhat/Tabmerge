@@ -25,6 +25,10 @@ if v:version < 700
 	finish
 endif
 
+if !exists('g:Tabmerge_default_window_location')
+  let g:Tabmerge_default_window_location = 'top'
+endif
+
 command! -nargs=* Tabmerge call Tabmerge(<f-args>)
 
 function! Tabmerge(...)  " {{{1
@@ -45,7 +49,7 @@ function! Tabmerge(...)  " {{{1
 	endif
 
 	if !exists('l:where')
-		let where = 'top'
+		let where = g:Tabmerge_default_window_location
 	endif
 
 	if !exists('l:tabnr')
